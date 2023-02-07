@@ -1,5 +1,12 @@
 package team.odds.oddshub.services
 
-class CourseService {
+import org.springframework.stereotype.Service
+import team.odds.oddshub.model.Course
+import team.odds.oddshub.repositories.CourseRepository
 
+@Service
+class CourseService constructor(val courseRepository: CourseRepository) {
+    fun all(): List<Course> {
+        return courseRepository.findAll()
+    }
 }
