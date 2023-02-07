@@ -5,14 +5,14 @@ import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 import team.odds.oddshub.controller.CourseController
-import team.odds.oddshub.model.Course
+import team.odds.oddshub.entities.Course
 import team.odds.oddshub.repositories.CourseRepository
 import team.odds.oddshub.services.CourseService
 
 @SpringBootTest
 class CourseTests {
     private var courseRepository: CourseRepository = mockk()
-    private val ccoCourse = Course(1, "CCO")
+    private val ccoCourse = Course(1, "CCO", "des", "image.png", "P'Roof")
 
     @Test
     fun notHaveAnyAvailableCourseForUser() {
@@ -38,7 +38,7 @@ class CourseTests {
 
     fun expectToHaveOneCourse(courses: List<Course>) {
         assert(courses.count() == 1)
-        assert(courses[0].name == ccoCourse.name)
+        assert(courses[0] == ccoCourse)
     }
 
     fun expectToNotHaveAnyCourse(courses: List<Course>) {

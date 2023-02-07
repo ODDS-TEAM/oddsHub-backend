@@ -1,7 +1,7 @@
 package team.odds.oddshub.services
 
 import org.springframework.stereotype.Service
-import team.odds.oddshub.model.Course
+import team.odds.oddshub.entities.Course
 import team.odds.oddshub.repositories.CourseRepository
 
 @Service
