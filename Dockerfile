@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-alpine as build
+FROM --platform=linux/amd64 eclipse-temurin:17-alpine as build
 COPY .mvn .mvn                                               
 COPY mvnw .                                                  
 COPY pom.xml .                                               
