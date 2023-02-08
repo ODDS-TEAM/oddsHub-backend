@@ -2,4 +2,8 @@
 spring:
   # Database
   datasource:
-    url: jdbc:tc:postgresql:9.6.8:///databasename
+    url: jdbc:h2:mem:oddshub_db
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
