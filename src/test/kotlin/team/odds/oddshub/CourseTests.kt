@@ -4,12 +4,14 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 import team.odds.oddshub.controller.CourseController
 import team.odds.oddshub.entities.Course
 import team.odds.oddshub.repositories.CourseRepository
 import team.odds.oddshub.services.CourseService
 
 @SpringBootTest
+@ActiveProfiles("test")
 class CourseTests {
     private var courseRepository: CourseRepository = mockk()
     private val ccoCourse = Course(1, "CCO", "des", "image.png", "P'Roof")

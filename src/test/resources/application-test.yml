@@ -1,0 +1,5 @@
+# Spring Boot configuration
+spring:
+  # Database
+  datasource:
+    url: jdbc:tc:postgresql:9.6.8:///databasename
