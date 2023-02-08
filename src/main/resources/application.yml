@@ -3,7 +3,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://43.225.140.223:5432/oddshub_db
+    url: jdbc:postgresql://localhost:5432/oddshub_db
     username: postgres
     password: postgres
   # JPA properties
