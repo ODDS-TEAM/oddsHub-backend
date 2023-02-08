@@ -1,7 +1,7 @@
 package team.odds.oddshub.services
 
 import org.springframework.stereotype.Service
-import team.odds.oddshub.entities.RegistrationUser
+import team.odds.oddshub.entities.RegistrationUserEntity
 import team.odds.oddshub.repositories.RegistrationUserRepository
 import team.odds.oddshub.entities.RegistrationUserPayload
 
@@ -9,7 +9,7 @@ import team.odds.oddshub.entities.RegistrationUserPayload
 class RegistrationUserService(
         val registrationUserRepository: RegistrationUserRepository) {
     fun saveRegistrationUser(registrationUserData: RegistrationUserPayload) {
-        val registrationUser = RegistrationUser(
+        val registrationUserEntity = RegistrationUserEntity(
                 title = registrationUserData.title,
                 firstName = registrationUserData.firstName,
                 lastName = registrationUserData.lastName,
@@ -17,6 +17,6 @@ class RegistrationUserService(
                 phone = registrationUserData.phone,
                 courseScheduleId = registrationUserData.courseScheduleId
         )
-        registrationUserRepository.save(registrationUser)
+        registrationUserRepository.save(registrationUserEntity)
     }
 }

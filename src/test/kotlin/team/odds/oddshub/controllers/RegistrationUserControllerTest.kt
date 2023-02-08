@@ -10,12 +10,11 @@ import org.junit.jupiter.api.Test
 import com.ninjasquad.springmockk.MockkBean
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import team.odds.oddshub.services.RegistrationUserService
 import team.odds.oddshub.entities.RegistrationUserPayload
 import org.springframework.http.MediaType
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.mockk.*
-import team.odds.oddshub.entities.RegistrationUser
+import team.odds.oddshub.entities.RegistrationUserEntity
 
 
 @SpringBootTest
@@ -36,13 +35,13 @@ class RegistrationUserControllerTest {
         fun `when user submit registration form then they should receive success response`() {
             val registrationUserPayload = RegistrationUserPayload("MISS", "Laksana", "Ang", "laksana@kkumail.com", "0997582806", 1234)
             val requestJson = jacksonObjectMapper().writeValueAsString(registrationUserPayload)
-            val registrationUser = RegistrationUser(
+            val registrationUserEntity = RegistrationUserEntity(
                     0, "MISS", "Laksana", "Ang", "laksana@kkumail.com", "0997582806", 1234
             )
 
             every {
                 registrationUserRepository.save(any())
-            } returns RegistrationUser()
+            } returns registrationUserEntity
 
 
             mockMvc.perform(MockMvcRequestBuilders.post("/registration")
@@ -52,7 +51,7 @@ class RegistrationUserControllerTest {
                     .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                registrationUserRepository.save(registrationUser)
+                registrationUserRepository.save(registrationUserEntity)
             }
         }
 
