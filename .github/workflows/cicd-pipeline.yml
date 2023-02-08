@@ -49,5 +49,5 @@ jobs:
          script: |
            docker stop oddshub-backend || true && docker rm oddshub-backend || true
            docker pull ghcr.io/odds-team/oddshub-backend:main
-           docker run -d -p 8080:8080 --name=oddshub-backend --env SPRING_PROFILES_ACTIVE=prod ghcr.io/odds-team/oddshub-backend:main
+           docker run -d -p 8080:8080 --name=oddshub-backend --env SPRING_PROFILES_ACTIVE=prod --env-file .env ghcr.io/odds-team/oddshub-backend:main
 

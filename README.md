@@ -16,6 +16,7 @@
         - Run `./mvnw test -Dspring.profiles.active=test`
         - Run `./mvnw package -Dmaven.test.skip`
     - Restart docker image through remote at huawei server (43.225.140.223)
+      - Database credential can be found in `.env` file
 
 - Database deployment
     - ssh to huawei server (43.225.140.223)
