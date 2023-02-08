@@ -9,6 +9,9 @@
     Git push code to main branch (Automatic deploy by github action)
     - Checkout repository
     - Build and push Docker image to github registry
+      - Inside build step it will run 2 necessary steps
+        - Run `./mvnw test -Dspring.profiles.active=test`
+        - Run `./mvnw package -Dmaven.test.skip`
     - Restart docker image through remote at huawei server (43.225.140.223)
 
 - Database deployment
@@ -22,4 +25,4 @@
     ```
 
 ## contributor
-- Jeep & Top
+- Jeep & Top & Wut & Pop
