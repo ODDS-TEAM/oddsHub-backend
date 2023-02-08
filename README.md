@@ -4,6 +4,9 @@
 - Run `docker-compose up -d`
 - Start application `./mvnw spring-boot:run`
 
+# How to run test
+- Using maven script to run the test `./mvnw test -Dspring.profiles.active=test`
+
 # Deploy step
 - App deployment
     Git push code to main branch (Automatic deploy by github action)
