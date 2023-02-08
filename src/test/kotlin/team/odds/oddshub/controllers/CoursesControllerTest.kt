@@ -16,7 +16,6 @@ import team.odds.oddshub.repositories.CourseRepository
 import team.odds.oddshub.services.CourseService
 
 @SpringBootTest
-@ActiveProfiles("test")
 @AutoConfigureMockMvc
 class CoursesControllerTest {
 
