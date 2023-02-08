@@ -47,7 +47,7 @@ jobs:
          username: ${{ secrets.USER }}
          key: ${{ secrets.KEY_SSH }}
          script: |
-           docker stop oddshub-backend
+           docker stop oddshub-backend || true && docker rm oddshub-backend || true
            docker pull ghcr.io/odds-team/oddshub-backend:main
            docker run -d -p 8080:8080 --name=oddshub-backend ghcr.io/odds-team/oddshub-backend:main
 
