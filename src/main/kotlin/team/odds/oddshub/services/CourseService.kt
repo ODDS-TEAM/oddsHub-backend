@@ -5,8 +5,9 @@ import team.odds.oddshub.entities.Course
 import team.odds.oddshub.repositories.CourseRepository
 
 @Service
-class CourseService constructor(val courseRepository: CourseRepository) {
-    fun all(): List<Course> {
+class CourseService(
+    val courseRepository: CourseRepository) {
+    fun getAllCourses(): List<Course> {
         return courseRepository.findAll()
     }
 }
