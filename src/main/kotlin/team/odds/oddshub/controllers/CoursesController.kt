@@ -22,8 +22,12 @@ class CoursesController(
 
     @PostMapping("/courses/{courseScheduleId}/welcome")
     fun sendEmail(@PathVariable courseScheduleId: Long): ResponseEntity<String> {
+        if (courseScheduleId == 1L) {
+            mailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
+        }
         if (courseScheduleId == 2L) {
             mailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
+            mailSenderService.send("builder@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
         }
         return ResponseEntity("Hello World!", HttpStatus.OK)
     }

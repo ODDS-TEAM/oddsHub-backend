@@ -1,11 +1,13 @@
 package team.odds.oddshub.controllers
 
 import com.ninjasquad.springmockk.MockkBean
+import io.mockk.Called
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.runs
 import io.mockk.verify
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -70,17 +72,23 @@ class CoursesControllerTest {
 
     @Nested
     inner class SendMailTest {
+
+        @BeforeEach
+        fun beforeEach() {
+            every { javaMailSenderService.send(any(),any(),any()) } just runs
+        }
+
         @Test
-        fun whenNoOneRegisterThisCourse_thenNoOneCannotReceiveEmail() {
-            val courseWithNoParticipants = 1
+        fun `when no one register this course then no one cannot receive email`() {
+            val courseWithNoParticipants = 0
             mockMvc.perform(MockMvcRequestBuilders.post("/courses/$courseWithNoParticipants/welcome"))
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
+
+            verify { javaMailSenderService wasNot Called }
         }
         @Test
-        fun whenHaveOneParticipantInThisCourse_thenParticipantShouldReceiveEmail(){
-            val courseWithOneParticipant = 2
-
-            every { javaMailSenderService.send(any(),any(),any()) } just runs
+        fun `when have one participant in this course then participant should receive email`(){
+            val courseWithOneParticipant = 1
 
             mockMvc.perform(MockMvcRequestBuilders.post("/courses/$courseWithOneParticipant/welcome"))
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
@@ -89,6 +97,19 @@ class CoursesControllerTest {
                 javaMailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
             }
         }
+
+        @Test
+        fun `when have two participant in this course than they should receive email`(){
+            val courseWithTwoParticipant = 2
+
+            mockMvc.perform(MockMvcRequestBuilders.post("/courses/$courseWithTwoParticipant/welcome"))
+                .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
+
+            verify(exactly = 2) { javaMailSenderService.send(any(), any(), any() )}
+            verify { javaMailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]") }
+            verify { javaMailSenderService.send("builder@odds.team", "test email", "Lorem ipsum dolor sit amet [...]") }
+        }
+
     }
 }
 
