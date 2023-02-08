@@ -7,6 +7,9 @@
 # Deploy step
 - App deployment
     Git push code to main branch (Automatic deploy by github action)
+    - Checkout repository
+    - Build and push Docker image to github registry
+    - Restart docker image through remote at huawei server (43.225.140.223)
 
 - Database deployment
     - ssh to huawei server (43.225.140.223)
