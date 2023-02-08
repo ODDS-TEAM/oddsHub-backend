@@ -15,3 +15,12 @@ data class RegistrationUser(
     val phone: String = "",
     val courseScheduleId: Int = 0,
 )
+
+data class RegistrationUserPayload(
+    val title: String ,
+    val firstName: String ,
+    val lastName: String ,
+    val email: String ,
+    val phone: String ,
+    val courseScheduleId: Int ,
+)

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 import team.odds.oddshub.entities.RegistrationUser
 import team.odds.oddshub.services.RegistrationUserService
 import org.springframework.web.bind.annotation.RequestBody
+import team.odds.oddshub.entities.RegistrationUserPayload
 
 @RestController
 class RegistrationUserController(
@@ -16,7 +17,7 @@ class RegistrationUserController(
 ) {
 
     @PostMapping("/registration")
-    fun saveRegistrationUser(@RequestBody body:Map<String, String>): ResponseEntity<String> {
+    fun saveRegistrationUser(@RequestBody body:RegistrationUserPayload): ResponseEntity<String> {
         registrationUserService.saveRegistrationUser(body)
         return ResponseEntity("", HttpStatus.NO_CONTENT)
     }
