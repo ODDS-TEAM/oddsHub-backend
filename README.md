@@ -7,6 +7,12 @@
 # How to run test
 - Using maven script to run the test `./mvnw test -Dspring.profiles.active=test`
 
+# How to create/update database schema
+- Add a new file of **DDL** in `resources/db/changelog/ODDS-HUB/DDL`, by order.
+
+# How to migrate data into the table
+- Add a new file of **DML** in `resources/db/changelog/ODDS-HUB/DML`, by order.
+
 # Deploy step
 - App deployment
     Git push code to main branch (Automatic deploy by github action)
