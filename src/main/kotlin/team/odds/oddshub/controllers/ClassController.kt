@@ -20,7 +20,7 @@ class ClassController(
         val subject = "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023"
         if (registrationUserEntityList.isNotEmpty()) {
             val emailList = registrationUserEntityList.map {
-                Email(it.email, subject, "Suri Wowza")
+                Email(it.email, subject, "${it.firstName} ${it.lastName}")
             }
             mailSenderService.sendBulk(emailList)
         }
