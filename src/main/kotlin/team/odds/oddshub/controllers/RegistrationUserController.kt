@@ -1,5 +1,5 @@
-
 package team.odds.oddshub.controllers
+
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -16,7 +16,10 @@ class RegistrationUserController(
 
     @PostMapping("/registration")
     fun saveRegistrationUser(@RequestBody body: RegistrationUserPayload): ResponseEntity<String> {
-         registrationUserService.saveRegistrationUser(body)
-        return ResponseEntity("", HttpStatus.NO_CONTENT)
+        val isRegistered = registrationUserService.saveRegistrationUser(body)
+        if (isRegistered) {
+            return ResponseEntity(HttpStatus.CREATED)
+        } 
+        return ResponseEntity(HttpStatus.BAD_REQUEST)
     }
 }
