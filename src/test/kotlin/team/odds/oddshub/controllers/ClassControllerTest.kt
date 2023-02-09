@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import team.odds.oddshub.entities.RegistrationUserEntity
+import team.odds.oddshub.entities.dto.Mail
 import team.odds.oddshub.repositories.RegistrationUserRepository
 import team.odds.oddshub.services.MailSenderService
 import java.util.*
@@ -33,7 +34,7 @@ class ClassControllerTest {
 
         @BeforeEach
         fun beforeEach() {
-            every { javaMailSenderService.send(any(), any(), any()) } just runs
+            every { javaMailSenderService.send(any()) } just runs
         }
 
         @Test
@@ -56,7 +57,7 @@ class ClassControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                javaMailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
+                javaMailSenderService.send(Mail("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]"))
             }
         }
 
