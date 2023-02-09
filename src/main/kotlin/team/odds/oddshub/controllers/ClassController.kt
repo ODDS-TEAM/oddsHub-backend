@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
-import team.odds.oddshub.entities.dto.Email
+import team.odds.oddshub.entities.dto.WelcomeEmail
 import team.odds.oddshub.repositories.RegistrationUserRepository
 import team.odds.oddshub.services.MailSenderService
 
@@ -19,10 +19,10 @@ class ClassController(
         val registrationUserEntityList = registrationUserRepository.getByClassId(classId)
         val subject = "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023"
         if (registrationUserEntityList.isNotEmpty()) {
-            val emailList = registrationUserEntityList.map {
-                Email(it.email, subject, "${it.firstName} ${it.lastName}")
+            val welcomeEmailList = registrationUserEntityList.map {
+                WelcomeEmail(it.email, subject, "${it.firstName} ${it.lastName}")
             }
-            mailSenderService.sendBulk(emailList)
+            mailSenderService.sendBulk(welcomeEmailList)
         }
         return ResponseEntity("Send e-mail successfully!", HttpStatus.OK)
     }

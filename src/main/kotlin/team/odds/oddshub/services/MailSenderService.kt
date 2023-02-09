@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
 import org.thymeleaf.TemplateEngine
 import org.thymeleaf.context.Context
-import team.odds.oddshub.entities.dto.Email
+import team.odds.oddshub.entities.dto.WelcomeEmail
 
 @Service
 class MailSenderService(
@@ -16,22 +16,22 @@ class MailSenderService(
     @Autowired
     private lateinit var javaMailSender: JavaMailSender
 
-    fun sendBulk(emilList: List<Email>) {
+    fun sendBulk(emilList: List<WelcomeEmail>) {
         emilList.forEach { email -> this.send(email) }
     }
 
-    fun send(email: Email) {
-        val message = createMessage(email)
+    fun send(email: WelcomeEmail) {
+        val message = createWelcomeMessage(email)
         this.javaMailSender.send(message)
     }
 
-    private fun createMessage(email: Email): MimeMessage {
+    private fun createWelcomeMessage(email: WelcomeEmail): MimeMessage {
         val message = javaMailSender.createMimeMessage()
         val helper = MimeMessageHelper(message)
         helper.setTo(email.to)
         helper.setSubject(email.subject)
         val ctx = Context()
-        ctx.setVariable("name", email.text)
+        ctx.setVariable("name", email.name)
         val htmlContent = templateEngine.process("welcomeMail", ctx)
         helper.setText(htmlContent)
         return message

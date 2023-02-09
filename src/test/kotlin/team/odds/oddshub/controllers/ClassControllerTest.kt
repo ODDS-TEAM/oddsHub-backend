@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import team.odds.oddshub.entities.RegistrationUserEntity
-import team.odds.oddshub.entities.dto.Email
+import team.odds.oddshub.entities.dto.WelcomeEmail
 import team.odds.oddshub.repositories.RegistrationUserRepository
 import team.odds.oddshub.services.MailSenderService
 import java.util.*
@@ -58,7 +58,7 @@ class ClassControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                javaMailSenderService.send(Email("jirat.cho@odds.team", "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023", "Suri Wowza"))
+                javaMailSenderService.send(WelcomeEmail("jirat.cho@odds.team", "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023", "Newii sad boy"))
             }
         }
 

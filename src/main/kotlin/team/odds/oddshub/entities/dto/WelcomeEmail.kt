@@ -1,7 +1,7 @@
 package team.odds.oddshub.entities.dto
 
-data class Email(
+data class WelcomeEmail(
     val to: String,
     val subject: String,
-    val text: String
+    val name: String
 )
