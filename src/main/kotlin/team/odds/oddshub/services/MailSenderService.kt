@@ -1,15 +1,17 @@
 package team.odds.oddshub.services
 
 import jakarta.mail.MessagingException
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
+import org.thymeleaf.TemplateEngine
+import org.thymeleaf.context.Context
 
 @Service
-class MailSenderService {
-    @Autowired
-    private lateinit var javaMailSender: JavaMailSender
+class MailSenderService(
+    val templateEngine: TemplateEngine,
+    val javaMailSender: JavaMailSender
+) {
 
     fun send(to: String, subject: String, text: String) {
         val mail = javaMailSender.createMimeMessage()
@@ -17,7 +19,10 @@ class MailSenderService {
             val helper = MimeMessageHelper(mail)
             helper.setTo(to)
             helper.setSubject(subject)
-            helper.setText(text)
+            val ctx = Context()
+            ctx.setVariable("someVariable", "test")
+            val htmlContent = templateEngine.process("welcomeMail", ctx)
+            helper.setText(htmlContent, true)
         } catch (e: MessagingException) {
             e.printStackTrace()
         } finally {
