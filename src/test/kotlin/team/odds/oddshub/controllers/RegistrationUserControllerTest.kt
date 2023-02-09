@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import team.odds.oddshub.entities.RegistrationUserEntity
 import team.odds.oddshub.entities.dto.RegistrationUserPayload
 import team.odds.oddshub.repositories.RegistrationUserRepository
+import java.util.*
 
 
 @SpringBootTest
@@ -31,19 +32,17 @@ class RegistrationUserControllerTest {
     @Nested
     inner class RegistrationUserTests {
 
-
         @Test
         fun `when user submit registration form then they should receive success response`() {
             val registrationUserPayload = RegistrationUserPayload("MISS", "Laksana", "Ang", "laksana@kkumail.com", "0997582806", 1234)
             val requestJson = jacksonObjectMapper().writeValueAsString(registrationUserPayload)
             val registrationUserEntity = RegistrationUserEntity(
-                    0, "MISS", "Laksana", "Ang", "laksana@kkumail.com", "0997582806", 1234
+                UUID.randomUUID(), "MISS", "Laksana", "Ang", "laksana@kkumail.com", "0997582806", 1234
             )
 
             every {
                 registrationUserRepository.save(any())
             } returns registrationUserEntity
-
 
             mockMvc.perform(MockMvcRequestBuilders.post("/registration")
                     .contentType(MediaType.APPLICATION_JSON)
@@ -52,7 +51,7 @@ class RegistrationUserControllerTest {
                     .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                registrationUserRepository.save(registrationUserEntity)
+                registrationUserRepository.save(any())
             }
         }
 

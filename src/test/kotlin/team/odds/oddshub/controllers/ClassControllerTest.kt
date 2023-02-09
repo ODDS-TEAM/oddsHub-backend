@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import team.odds.oddshub.entities.RegistrationUserEntity
 import team.odds.oddshub.repositories.RegistrationUserRepository
 import team.odds.oddshub.services.MailSenderService
+import java.util.*
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -60,9 +61,9 @@ class ClassControllerTest {
         }
 
         private fun givenParticipantOfClass(classId: Long, participantList: List<String>) {
-            val participantListEntity = participantList.mapIndexed { index, email ->
+            val participantListEntity = participantList.map { email ->
                 RegistrationUserEntity(
-                    index.toLong(),
+                    UUID.randomUUID(),
                     "Miss",
                     "Newii",
                     "sad boy",

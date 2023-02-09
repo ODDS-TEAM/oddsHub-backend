@@ -7,10 +7,17 @@ import jakarta.persistence.Id
 
 @Entity
 data class CourseEntity(
-        @Id @GeneratedValue
-        val id: Long = 0,
-        val name: String = "",
-        @Column(columnDefinition="TEXT") val description: String = "",
-        @Column(columnDefinition="TEXT") val image: String = "",
-        val instructor: String = ""
+        @Id
+        @GeneratedValue
+        val id: Long,
+
+        val name: String,
+
+        @Column(columnDefinition="TEXT")
+        val description: String,
+
+        @Column(columnDefinition="TEXT")
+        val image: String,
+
+        val instructor: String
 )
