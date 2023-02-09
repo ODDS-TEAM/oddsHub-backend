@@ -33,7 +33,7 @@ class MailSenderService(
         val ctx = Context()
         ctx.setVariable("name", email.name)
         val htmlContent = templateEngine.process("welcomeMail", ctx)
-        helper.setText(htmlContent)
+        helper.setText(htmlContent, true)
         return message
     }
 }
