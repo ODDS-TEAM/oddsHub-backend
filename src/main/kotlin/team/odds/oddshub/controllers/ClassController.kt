@@ -17,12 +17,13 @@ class ClassController(
     @PostMapping("/class/{classId}/welcome")
     fun sendEmail(@PathVariable classId: Long): ResponseEntity<String> {
         val registrationUserEntityList = registrationUserRepository.getByClassId(classId)
+        val subject = "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023"
         if (registrationUserEntityList.isNotEmpty()) {
             val emailList = registrationUserEntityList.map {
-                Email(it.email, "test email", "Lorem ipsum dolor sit amet [...]")
+                Email(it.email, subject, "Suri Wowza")
             }
             mailSenderService.sendBulk(emailList)
         }
-        return ResponseEntity("Hello World!", HttpStatus.OK)
+        return ResponseEntity("Send e-mail successfully!", HttpStatus.OK)
     }
 }

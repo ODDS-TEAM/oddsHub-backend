@@ -5,10 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
+import org.thymeleaf.TemplateEngine
+import org.thymeleaf.context.Context
 import team.odds.oddshub.entities.dto.Email
 
 @Service
-class MailSenderService {
+class MailSenderService(
+    val templateEngine: TemplateEngine
+) {
     @Autowired
     private lateinit var javaMailSender: JavaMailSender
 
@@ -26,8 +30,10 @@ class MailSenderService {
         val helper = MimeMessageHelper(message)
         helper.setTo(email.to)
         helper.setSubject(email.subject)
-        helper.setText(email.text)
+        val ctx = Context()
+        ctx.setVariable("name", email.text)
+        val htmlContent = templateEngine.process("welcomeMail", ctx)
+        helper.setText(htmlContent)
         return message
     }
 }
-

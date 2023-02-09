@@ -53,12 +53,12 @@ class ClassControllerTest {
         @Test
         fun `when have one participant in this class then participant should receive email`() {
             val classWithOneParticipant = 1L
-            givenParticipantOfClass(classWithOneParticipant, listOf("newii@odds.team"))
+            givenParticipantOfClass(classWithOneParticipant, listOf("jirat.cho@odds.team"))
             mockMvc.perform(MockMvcRequestBuilders.post("/class/$classWithOneParticipant/welcome"))
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                javaMailSenderService.send(Email("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]"))
+                javaMailSenderService.send(Email("jirat.cho@odds.team", "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023", "Suri Wowza"))
             }
         }
 
