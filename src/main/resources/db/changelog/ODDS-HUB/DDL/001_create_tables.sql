@@ -14,7 +14,8 @@ CREATE TABLE courses
     image       text,
     instructor  varchar(255),
     name        varchar(255),
-    quota       SERIAL
+    quota       SERIAL,
+    price       INT
 );
 
 CREATE TABLE registration_users

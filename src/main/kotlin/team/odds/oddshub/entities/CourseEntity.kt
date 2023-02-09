@@ -11,11 +11,13 @@ data class CourseEntity(
 
         val name: String,
 
-        @Column(columnDefinition="TEXT")
         val description: String,
 
-        @Column(columnDefinition="TEXT")
         val image: String,
 
-        val instructor: String
+        val instructor: String,
+
+        val quota: Int,
+
+        val price: Int
 )
