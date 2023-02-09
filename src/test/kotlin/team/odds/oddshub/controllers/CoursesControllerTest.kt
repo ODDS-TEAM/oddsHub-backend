@@ -10,7 +10,7 @@ import team.odds.oddshub.services.CourseService
 class CoursesControllerTest {
 
     private var courseRepository: CourseRepository = mockk()
-    private val ccoCourse = CourseEntity(1, "CCO", "des", "image.png", "P'Roof")
+    private val ccoCourse = CourseEntity(1, "CCO", "des", "image.png", "P'Roof", 30, 40000)
 
     @Test
     fun `Not have any available course for user`() {
