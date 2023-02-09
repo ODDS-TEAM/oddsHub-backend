@@ -1,4 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: BUSINESS-EVENT/master.yaml
-      relativeToChangelogFile: true

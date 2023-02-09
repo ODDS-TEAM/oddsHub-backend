@@ -13,12 +13,13 @@ CREATE TABLE courses
     description text,
     image       text,
     instructor  varchar(255),
-    name        varchar(255)
+    name        varchar(255),
+    quota       SERIAL
 );
 
 CREATE TABLE registration_users
 (
-    id         SERIAL PRIMARY KEY,
+    id         UUID PRIMARY KEY,
     class_id   SERIAL,
     email varchar(255),
     first_name varchar(255),
