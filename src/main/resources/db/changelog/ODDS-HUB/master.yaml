@@ -1,0 +1,9 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: liquibase
+
+  - includeAll:
+      path: DDL
+      relativeToChangelogFile: true

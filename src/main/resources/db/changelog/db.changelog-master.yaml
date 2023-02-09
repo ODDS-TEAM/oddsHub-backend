@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: ODDS-HUB/master.yaml
+      relativeToChangelogFile: true

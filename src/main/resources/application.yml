@@ -6,6 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/oddshub_db
     username: postgres
     password: postgres
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
   # JPA properties
   jpa:
     hibernate:
