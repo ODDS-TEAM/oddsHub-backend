@@ -13,14 +13,5 @@ data class RegistrationUserEntity(
     val lastName: String,
     val email: String,
     val phone: String,
-    val courseScheduleId: Long,
-)
-
-data class RegistrationUserPayload(
-    val title: String ,
-    val firstName: String ,
-    val lastName: String ,
-    val email: String ,
-    val phone: String ,
-    val courseScheduleId: Long ,
+    val classId: Long,
 )

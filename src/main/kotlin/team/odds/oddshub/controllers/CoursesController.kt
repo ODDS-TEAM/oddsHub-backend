@@ -1,33 +1,16 @@
 package team.odds.oddshub.controllers
 
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
-import team.odds.oddshub.entities.Course
-import team.odds.oddshub.repositories.RegistrationUserRepository
+import team.odds.oddshub.entities.CourseEntity
 import team.odds.oddshub.services.CourseService
-import team.odds.oddshub.services.MailSenderService
 
 @RestController
 class CoursesController(
     val courseService: CourseService,
-    val mailSenderService: MailSenderService,
-    val registrationUserRepository: RegistrationUserRepository
 ) {
     @GetMapping("/courses")
-    fun getAllCourses(): List<Course> {
+    fun getAllCourses(): List<CourseEntity> {
         return courseService.getAllCourses()
-    }
-
-    @PostMapping("/courses/{courseScheduleId}/welcome")
-    fun sendEmail(@PathVariable courseScheduleId: Long): ResponseEntity<String> {
-        val RegistrationUserEntityList = registrationUserRepository.getByCourseScheduleId(courseScheduleId)
-        if (RegistrationUserEntityList.isNotEmpty()) {
-            mailSenderService.send("newii@odds.team", "test email", "Lorem ipsum dolor sit amet [...]")
-        }
-        return ResponseEntity("Hello World!", HttpStatus.OK)
     }
 }

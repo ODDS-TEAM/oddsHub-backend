@@ -2,8 +2,8 @@ package team.odds.oddshub.repositories
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import team.odds.oddshub.entities.Course
+import team.odds.oddshub.entities.CourseEntity
 
 @Repository
-interface CourseRepository: JpaRepository<Course, Long> {
+interface CourseRepository: JpaRepository<CourseEntity, Long> {
 }

@@ -6,5 +6,5 @@ import team.odds.oddshub.entities.RegistrationUserEntity
 
 @Repository
 interface RegistrationUserRepository: JpaRepository<RegistrationUserEntity, Long> {
-    fun getByCourseScheduleId(courseScheduleId: Long): List<RegistrationUserEntity>
+    fun getByClassId(courseScheduleId: Long): List<RegistrationUserEntity>
 }

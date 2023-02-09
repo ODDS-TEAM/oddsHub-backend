@@ -1,20 +1,21 @@
 package team.odds.oddshub.controllers
 
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.test.web.servlet.MockMvc
-import team.odds.oddshub.repositories.RegistrationUserRepository
-import org.junit.jupiter.api.Nested
-import org.springframework.beans.factory.annotation.Autowired
-import org.junit.jupiter.api.Test
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.ninjasquad.springmockk.MockkBean
+import io.mockk.every
+import io.mockk.verify
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import team.odds.oddshub.entities.RegistrationUserPayload
-import org.springframework.http.MediaType
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import io.mockk.*
 import team.odds.oddshub.entities.RegistrationUserEntity
+import team.odds.oddshub.entities.dto.RegistrationUserPayload
+import team.odds.oddshub.repositories.RegistrationUserRepository
 
 
 @SpringBootTest
