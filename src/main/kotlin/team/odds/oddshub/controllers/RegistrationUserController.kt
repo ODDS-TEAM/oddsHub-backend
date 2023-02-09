@@ -16,7 +16,7 @@ class RegistrationUserController(
 
     @PostMapping("/registration")
     fun saveRegistrationUser(@RequestBody body: RegistrationUserPayload): ResponseEntity<String> {
-        registrationUserService.saveRegistrationUser(body)
+         registrationUserService.saveRegistrationUser(body)
         return ResponseEntity("", HttpStatus.NO_CONTENT)
     }
 }
