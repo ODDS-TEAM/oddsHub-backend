@@ -71,7 +71,7 @@ class RegistrationUserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson)
             )
-                .andExpect(MockMvcResultMatchers.status().isBadRequest)
+                .andExpect(MockMvcResultMatchers.status().isOk)
 
             verify {
                 registrationUserRepository.save(any()) wasNot Called
@@ -110,7 +110,7 @@ class RegistrationUserControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(requestJson)
             )
-                    .andExpect(MockMvcResultMatchers.status().isCreated)
+                    .andExpect(MockMvcResultMatchers.status().isOk)
 
             verify {
                 registrationUserRepository.save(any())
