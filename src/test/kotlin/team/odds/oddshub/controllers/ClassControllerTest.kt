@@ -58,7 +58,7 @@ class ClassControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is2xxSuccessful)
 
             verify {
-                javaMailSenderService.send(WelcomeEmail("jirat.cho@odds.team", "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023", "Newii sad boy"))
+                javaMailSenderService.send(WelcomeEmail("jirat.cho@odds.team", "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 29 May - 1 June 2023", "Newii sad boy"))
             }
         }
 

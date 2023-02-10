@@ -17,7 +17,7 @@ class ClassController(
     @PostMapping("/class/{classId}/welcome")
     fun sendEmail(@PathVariable classId: Long): ResponseEntity<String> {
         val registrationUserEntityList = registrationUserRepository.getByClassId(classId)
-        val subject = "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 28-30 November 2023"
+        val subject = "Welcome to Certified LeSS Practitioner: Principles to Practices, Bangkok 29 May - 1 June 2023"
         if (registrationUserEntityList.isNotEmpty()) {
             val welcomeEmailList = registrationUserEntityList.map {
                 WelcomeEmail(it.email, subject, "${it.firstName} ${it.lastName}")
