@@ -8,10 +8,10 @@ import java.util.*
 data class ClassEntity(
     @Id
     @GeneratedValue
-    val id: Long,
+    val id: Long = 0,
 
     @Column(name = "course_id")
-    val courseId: Long,
+    val courseId: Long = 0,
 
     @Temporal(TemporalType.TIMESTAMP)
     val startDate: Date? = Calendar.getInstance().time,

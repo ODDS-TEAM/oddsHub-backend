@@ -7,17 +7,17 @@ import jakarta.persistence.*
 data class CourseEntity(
         @Id
         @GeneratedValue
-        val id: Long,
+        val id: Long = 0,
 
-        val name: String,
+        val name: String = "",
 
-        val description: String,
+        val description: String = "",
 
-        val image: String,
+        val image: String = "",
 
-        val instructor: String,
+        val instructor: String = "",
 
-        val quota: Int,
+        val quota: Int = 0,
 
-        val price: Int
+        val price: Int = 0
 )
