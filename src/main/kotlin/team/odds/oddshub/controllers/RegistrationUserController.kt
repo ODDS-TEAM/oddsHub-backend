@@ -19,8 +19,8 @@ class RegistrationUserController(
     fun saveRegistrationUser(@Valid @RequestBody body: RegistrationUserPayload): ResponseEntity<String> {
         val isRegistered = registrationUserService.saveRegistrationUser(body)
         if (isRegistered) {
-            return ResponseEntity(HttpStatus.CREATED)
+            return ResponseEntity("OK", HttpStatus.OK)
         } 
-        return ResponseEntity(HttpStatus.BAD_REQUEST)
+        return ResponseEntity("FULL", HttpStatus.OK)
     }
 }

@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository
 import team.odds.oddshub.entities.CourseEntity
 
 @Repository
-interface CourseRepository: JpaRepository<CourseEntity, Long> {
-}
+interface CourseRepository: JpaRepository<CourseEntity, Long>
