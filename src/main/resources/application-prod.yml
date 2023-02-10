@@ -6,3 +6,6 @@ spring:
     url: jdbc:postgresql://43.225.140.223:5432/oddshub_db
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:postgres}
+  mail:
+    username: ${SENDER_EMAIL}
+    password: ${SENDER_PASSWORD}
