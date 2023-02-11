@@ -36,3 +36,8 @@
 
 ## contributor
 - Jeep & Top & Wut & Pop & Airmee
+
+## Note
+Currently, email sender using gmail that temporarily created for local/dev env. 
+
+If anyone want to manage this gmail please contact Jeep (jirat.cho).
