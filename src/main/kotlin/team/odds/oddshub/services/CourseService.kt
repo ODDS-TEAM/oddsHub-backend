@@ -12,15 +12,16 @@ class CourseService(
     fun getAllCourses(): List<CoursePayload> {
         val courses = courseRepository.findAll()
         return courses.map {
-            val startDate = classRepository.findByCourseId(it.id).get().startDate
+            val class2 = classRepository.findByCourseId(it.id).get()
             CoursePayload(
                 it.id,
+                class2.id,
                 it.name,
                 it.description,
                 it.image,
                 it.instructor,
                 it.price,
-                startDate!!
+                class2.startDate!!
             )
         }.toList()
     }
