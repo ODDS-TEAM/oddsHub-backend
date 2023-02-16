@@ -1,12 +1,9 @@
 package team.odds.oddshub.services
 
 import org.springframework.stereotype.Service
-import team.odds.oddshub.entities.CourseEntity
 import team.odds.oddshub.entities.dto.CoursePayload
 import team.odds.oddshub.repositories.ClassRepository
 import team.odds.oddshub.repositories.CourseRepository
-import java.util.Collections
-import java.util.stream.Collectors
 
 @Service
 class CourseService(
@@ -20,6 +17,7 @@ class CourseService(
                 it.id,
                 it.name,
                 it.description,
+                it.image,
                 it.instructor,
                 it.price,
                 startDate!!

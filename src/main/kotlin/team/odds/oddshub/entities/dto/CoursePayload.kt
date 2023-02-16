@@ -6,6 +6,7 @@ data class CoursePayload(
     val id: Long,
     val name: String,
     val description: String,
+    val image: String,
     val instructor: String,
     val price: Int,
     val startDate: Date

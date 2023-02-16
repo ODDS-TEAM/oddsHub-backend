@@ -17,7 +17,7 @@ class CoursesControllerTest {
     private var classRepository: ClassRepository = mockk()
     private val ccoCourse = CourseEntity(1, "CCO", "des", "image.png", "P'Roof", 30, 40000)
     private val ccoClass = ClassEntity(1, 1, Date(), Date())
-    private val ccoPayload = CoursePayload(1, "CCO", "des", "P'Roof", 40000, Date())
+    private val ccoPayload = CoursePayload(1, "CCO", "des","image.png", "P'Roof", 40000, Date())
 
     @Test
     fun `Not have any available course for user`() {
